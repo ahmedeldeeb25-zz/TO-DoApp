@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>To Do App</title>
+        <script src="js/angular.min.js"></script>
+        <script src="js/script.js"></script>
+        
+        <style>
+            span.done-true{
+                color: :gray;
+                font-style: italic;
+                text-decoration: line-through;
+            }
+        </style>
+    </head>
+    
+    <body ng-app="myapp" ng-controller="app">
+        <h1 style="text-align:center">Add a Task</h1>
+        <input ng-keyup="searchEnter()" ng-model="task" type="text" style="display:block;margin:0 auto;padding:5px;font-size;15px;width:300px;">
+        
+        <div id="tasksToshow">
+            <ul>
+                <li ng-repeat="one in tasks track by $index">
+                    <input type="checkbox" ng-model="one.status" ng-click="update()" value="{{$index}}"  >
+                    <span ng-dblclick="contentEdit(one.taskMessage)" ng-keydown="again(one.taskMessage)" contenteditable="{{edit}}" ng-model="one.taskMessage" class="done-{{one.status}}">
+                        {{one.taskMessage}}
+                    </span>
+                </li>
+            </ul>
+        </div>
+        
+    </body>
+</html>
